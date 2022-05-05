@@ -6,8 +6,16 @@ try:
 except ImportError:
     from yaml import Loader, Dumper
 from yaml import scanner
+
 import os
 import sys
+import requests
+
+
+def perform_request(user, data):
+    headers = {"user-name": user}
+    r = requests.post("http://localhost:5000/", headers=headers, json={"data": data})
+    print(r.text)
 
 
 def read_schema():
@@ -34,7 +42,7 @@ def validate_user(user, schema):
         branch = os.getenv("GH_BRANCH")
         actor = os.getenv("GH_ACTOR")
         hash_ = os.getenv("dir_hash")
-        print(f"Valid user: {user}:{actor}:{branch}:{hash_}")
+        perform_request(user, f"Valid user: {user}:{actor}:{branch}:{hash_}")
     else:
         print(f"invalid user {user}")
 
