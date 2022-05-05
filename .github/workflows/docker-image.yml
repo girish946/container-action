@@ -1,0 +1,28 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build-and-greet:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'checkout'
+        uses: actions/checkout@v3
+      - name: Build the Docker image
+        uses: ./
+        id: build-and-greet
+        with:
+          input-name: 'user_one'
+          serivce-file: '/.oblivious/service.yaml'
+        env:
+          GH_ACTOR: "${{ github.actor }}"
+          GH_BRANCH: ${{ github.ref }}
+      - name: file exists check
+        run: echo "file .oblivious/service.yaml ${{ steps.build-and-greet.outputs.file_exists }}"

@@ -1,0 +1,20 @@
+name: 'container-action'
+description: 'github docker container action'
+inputs:
+  input-name:
+    description: 'input name for the greetings message'
+    required: true
+  serivce-file:
+    description: 'yaml file for the config/schema'
+    required: true
+    default: '.oblivious/service.yaml'
+outputs:
+  file_exists:
+    description: 'flag to indicate if services.yaml exists'
+  file_contents:
+    description: 'contents of the file'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.input-name }}
