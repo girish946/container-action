@@ -14,3 +14,7 @@ file_contents=`cat $2`
 
 echo "::set-output name=file_exists::$file_exists"
 echo "::set-output name=file_contents::$file_contents"
+
+
+dir_hash=`. /opt/venv/bin/activate && python get-hash.py .`
+echo "::set-output name=dir_hash::$dir_hash"

@@ -13,8 +13,11 @@ outputs:
     description: 'flag to indicate if services.yaml exists'
   file_contents:
     description: 'contents of the file'
+  dir_hash:
+    description: 'hash for all of the files in the current directory'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.input-name }}
+    - ${{ inputs.serivce-file }}
