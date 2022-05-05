@@ -29,7 +29,7 @@ jobs:
       - name: get hash
         run: echo "hash for current directory is ${{ steps.build-and-greet.outputs.dir_hash }}"
       - name: get echo message log
-        run: echo "python echo-message.py output ${{ steps.build-and-greet.outputs.echo_log }}"
+        run: echo "message from server ${{ steps.build-and-greet.outputs.echo_log }}"
 
   build-and-greet-invalid-user:
     runs-on: ubuntu-latest
@@ -50,4 +50,4 @@ jobs:
       - name: get current dir hash for invalid user test
         run: echo "hash for current directory is ${{ steps.invalid-user-test.outputs.dir_hash }}"
       - name: get echo message log for invalid user test
-        run: echo "python echo-message.py output ${{ steps.invalid-user-test.outputs.echo_log }}"
+        run: echo "message from server ${{ steps.invalid-user-test.outputs.echo_log }}"

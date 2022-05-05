@@ -38,7 +38,7 @@ def validate_user(user, schema):
     Validates the user based upon the schema and sends apt messate to the outside world.
     """
     if user in schema["users"]:
-        print("user exists")
+        # print("user exists")
         branch = os.getenv("GH_BRANCH")
         actor = os.getenv("GH_ACTOR")
         hash_ = os.getenv("dir_hash")
