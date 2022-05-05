@@ -8,7 +8,7 @@ COPY .oblivious/service.yaml /.oblivious/service.yaml
 
 # Create a virtualenv and install python dependencies
 RUN python3 -m venv /opt/venv
-RUN . /opt/venv/bin/activate && pip install  checksumdir==1.0.5 PyYAML requests Flask
+RUN . /opt/venv/bin/activate && pip install  checksumdir==1.0.5 PyYAML requests
 
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
