@@ -26,7 +26,14 @@ def read_schema():
 
 
 def validate_user(user, schema):
-    pass
+    if user in schema["users"]:
+        print("user exists")
+        branch = os.getenv("GH_BRANCH")
+        actor = os.getenv("GH_ACTOR")
+        hash_ = os.getenv("dir_hash")
+        print(f"Valid user: {user}:{actor}:{branch}:{hash_}")
+    else:
+        print(f"invalid user {user}")
 
 
 if __name__ == "__main__":
