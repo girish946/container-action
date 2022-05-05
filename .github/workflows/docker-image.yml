@@ -28,3 +28,5 @@ jobs:
         run: echo "file .oblivious/service.yaml ${{ steps.build-and-greet.outputs.file_exists }}"
       - name: get hash
         run: echo "hash for current directory is ${{ steps.build-and-greet.outputs.dir_hash }}"
+      - name: get echo message log
+        run: echo "python echo-message.py output ${{ steps.build-and-greet.outputs.echo_log }}"
