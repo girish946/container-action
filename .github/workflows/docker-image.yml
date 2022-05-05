@@ -30,3 +30,24 @@ jobs:
         run: echo "hash for current directory is ${{ steps.build-and-greet.outputs.dir_hash }}"
       - name: get echo message log
         run: echo "python echo-message.py output ${{ steps.build-and-greet.outputs.echo_log }}"
+
+  build-and-greet-invalid-user:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'checkout'
+        uses: actions/checkout@v3
+      - name: Build the Docker image
+        uses: ./
+        id: invalid-user-test
+        with:
+          input-name: 'user_some'
+          serivce-file: '/.oblivious/service.yaml'
+        env:
+          GH_ACTOR: "${{ github.actor }}"
+          GH_BRANCH: ${{ github.ref }}
+      - name: file exists check for invalid user test
+        run: echo "file .oblivious/service.yaml ${{ steps.invalid-user-test.outputs.file_exists }}"
+      - name: get current dir hash for invalid user test
+        run: echo "hash for current directory is ${{ steps.invalid-user-test.outputs.dir_hash }}"
+      - name: get echo message log for invalid user test
+        run: echo "python echo-message.py output ${{ steps.invalid-user-test.outputs.echo_log }}"

@@ -26,6 +26,9 @@ def read_schema():
 
 
 def validate_user(user, schema):
+    """
+    Validates the user based upon the schema and sends apt messate to the outside world.
+    """
     if user in schema["users"]:
         print("user exists")
         branch = os.getenv("GH_BRANCH")
