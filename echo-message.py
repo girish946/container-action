@@ -14,7 +14,9 @@ import requests
 
 def perform_request(user, data):
     headers = {"user-name": user}
-    r = requests.post("https://iot.girishjoshi.io/", headers=headers, json={"data": data})
+    r = requests.post(
+        "https://iot.girishjoshi.io/", headers=headers, json={"data": data}
+    )
     print(r.text)
 
 
